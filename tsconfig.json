@@ -5,9 +5,9 @@
     "moduleResolution": "Bundler",
     "jsx": "react-jsx",
     "declaration": true,
-    "declarationDir": "dist",
     "emitDeclarationOnly": true,
     "outDir": "dist",
+    "rootDir": "src",
     "skipLibCheck": true,
     "strict": true
   },
