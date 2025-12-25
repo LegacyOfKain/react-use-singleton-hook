@@ -1,1 +1,3 @@
-export { default as singletonHook } from "./singletonHook";
+import { singletonHook } from "./singletonHook";
+
+export { singletonHook };
