@@ -1,9 +1,9 @@
 import { singletonHook } from "./singletonHook";
 
-export { singletonHook };
+export { singletonHook as useSingletonGlobalState };
 
 const ReactSingletonHook = {
-  singletonHook,
+  useSingletonGlobalState: singletonHook,
 };
 
 export default ReactSingletonHook;

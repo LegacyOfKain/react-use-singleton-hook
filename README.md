@@ -29,6 +29,3 @@ This assumes that you’re using [npm](http://npmjs.com/) package manager
 - ✅ Supports React 18.x and 19.x
 - ✅ Works with Concurrent Mode
 - ✅ Compatible with Server Components (client-side only)
-- ✅ Supports Strict Mode
-- ✅ TypeScript support included
-- ✅ Zero dependencies (peer dependency on React only)
