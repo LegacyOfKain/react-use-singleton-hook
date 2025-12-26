@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { createStore } from "zustand/vanilla";
-import { useStore } from "zustand";
+import { createStore } from "./vanilla";
+import { useStore } from "./react";
 import { createRoot, type Root } from "react-dom/client";
 
 type Options = {
