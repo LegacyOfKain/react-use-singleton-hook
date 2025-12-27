@@ -24,6 +24,56 @@ pnpm add react-use-singleton-hook
 
 This assumes that you’re using [npm](http://npmjs.com/) package manager
 
+## What is a singleton hook
+
+- **Works like React Context**: A singleton hook encapsulates shared state logic and exposes it to any component that calls the hook, similar to how context provides values to consumers.
+- **Mounts lazily**: The hook logic runs only when the first component uses it. After mounting, it stays active for the app’s lifetime unless configured to unmount.
+- **No setup required**: No need for context providers or changes to your app structure. The hook uses React’s built-in hooks and a hidden DOM node for efficient, portable state management.
+
+## Examples
+
+#### dark/light mode switch
+Whenever `Configurator` changes darkMode, all subscribed components are updated.
+
+```javascript
+/***************    file:src/services/darkMode.js    ***************/  
+import { useState } from 'react';
+import { createSingletonGlobalState } from 'react-use-singleton-hook';
+
+const initDarkMode = false;
+let globalSetMode = () => { throw new Error('you must useDarkMode before setting its state'); };
+
+export const useDarkMode = createSingletonGlobalState(initDarkMode, () => {
+  const [mode, setMode] = useState(initDarkMode);
+  globalSetMode = setMode;
+  return mode;
+});
+
+export const setDarkMode = mode => globalSetMode(mode);
+
+
+/***************    file:src/compoents/App.js    ***************/
+
+import  React from 'react';
+import { useDarkMode, setDarkMode } from 'src/services/darkMode';
+
+const Consumer1 = () => {
+  const mode = useDarkMode();
+  return <div className={`is-dark-${mode}`}>Consumer1 - {`${mode}`}</div>;
+};
+
+const Consumer2 = () => {
+  const mode = useDarkMode();
+  return <div className={`is-dark-${mode}`}>Consumer2 - {`${mode}`}</div>;
+};
+
+const Configurator = () => {
+  const mode = useDarkMode();
+  return <button onClick={() => setDarkMode(!mode)}>Toggle dark/light</button>;
+};
+
+```
+
 ### Compatibility
 
 - ✅ Supports React 18.x and 19.x
