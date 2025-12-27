@@ -38,12 +38,12 @@ Whenever `Configurator` changes darkMode, all subscribed components are updated.
 ```javascript
 /***************    file:src/services/darkMode.js    ***************/  
 import { useState } from 'react';
-import { createSingletonGlobalState } from 'react-use-singleton-hook';
+import { createSingletonStateHook } from 'react-use-singleton-hook';
 
 const initDarkMode = false;
 let globalSetMode = () => { throw new Error('you must useDarkMode before setting its state'); };
 
-export const useDarkMode = createSingletonGlobalState(initDarkMode, () => {
+export const useDarkMode = createSingletonStateHook(initDarkMode, () => {
   const [mode, setMode] = useState(initDarkMode);
   globalSetMode = setMode;
   return mode;

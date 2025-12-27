@@ -1,6 +1,6 @@
 {
   "name": "react-use-singleton-hook",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "type": "module",
   "main": "dist/main.js",
   "module": "dist/main.js",
